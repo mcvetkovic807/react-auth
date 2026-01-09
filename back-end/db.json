@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": "1ca7269e-48f1-4386-b1f8-eaa40b5d60b6",
+      "email": "test@email.com",
+      "passwordHash": "$2b$10$Qk/pdht/TSZQUv1KizShH.ou5G1veXbRaCbryI3jKK1q2NtABgGhC",
+      "info": {
+        "hairColor": "",
+        "favoriteFood": "",
+        "bio": ""
+      },
+      "isVerified": false
+    }
+  ]
+}
