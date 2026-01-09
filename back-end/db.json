@@ -10,6 +10,17 @@
         "bio": ""
       },
       "isVerified": false
+    },
+    {
+      "id": "14c3bf8c-91e9-43e6-a5d7-76ac10a80eae",
+      "email": "test2@email.com",
+      "passwordHash": "$2b$10$RDSXrQogdwNBbBzWcwZnI.9Ou6YumGm1hCOX.gS861IvYF3bBFv1.",
+      "info": {
+        "hairColor": "",
+        "favoriteFood": "",
+        "bio": ""
+      },
+      "isVerified": false
     }
   ]
 }
