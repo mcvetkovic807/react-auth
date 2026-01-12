@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@sendgrid/mail": "^8.1.6",
     "bcrypt": "^6.0.0",
     "jsonwebtoken": "^9.0.3",
     "uuid": "^13.0.0"
