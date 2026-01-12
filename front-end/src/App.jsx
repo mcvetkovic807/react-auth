@@ -5,15 +5,18 @@ import { LogInPage } from './LogInPage';
 import { UserInfoPage } from './UserInfoPage';
 import { PrivateRoute } from './PrivateRoute';
 import { JwtDecoder } from "./JwtDecoder.jsx";
+import { useUser } from './useUser.js';
 
 function App() {
+  const user = useUser();
+
   return (
     <div className="page-container">
       <BrowserRouter>
         <Routes>
           <Route path="/log-in" element={<LogInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
-          <Route element={<PrivateRoute redirectPath="log-in" isAllowed={false} />}>
+          <Route element={<PrivateRoute redirectPath="log-in" isAllowed={!!user} />}>
             <Route path="/" element={<UserInfoPage />} />
           </Route>
           <Route element={<PrivateRoute redirectPath="log-in" isAllowed={true} />}>

@@ -1,24 +1,13 @@
 {
   "users": [
     {
-      "id": "1ca7269e-48f1-4386-b1f8-eaa40b5d60b6",
+      "id": "9b3a31ed-85e2-4716-811c-4e28dc1d0e51",
       "email": "test@email.com",
-      "passwordHash": "$2b$10$Qk/pdht/TSZQUv1KizShH.ou5G1veXbRaCbryI3jKK1q2NtABgGhC",
+      "passwordHash": "$2b$10$L9B3zqP7diWWOkDe7Jql5eUxUB/1HueAS/cD/xVzLjgH8L8FUZFhu",
       "info": {
-        "hairColor": "",
-        "favoriteFood": "",
-        "bio": ""
-      },
-      "isVerified": false
-    },
-    {
-      "id": "14c3bf8c-91e9-43e6-a5d7-76ac10a80eae",
-      "email": "test2@email.com",
-      "passwordHash": "$2b$10$RDSXrQogdwNBbBzWcwZnI.9Ou6YumGm1hCOX.gS861IvYF3bBFv1.",
-      "info": {
-        "hairColor": "",
-        "favoriteFood": "",
-        "bio": ""
+        "hairColor": "Brown",
+        "favoriteFood": "Pizza",
+        "bio": "I like programming and pizza"
       },
       "isVerified": false
     }
