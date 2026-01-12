@@ -14,7 +14,7 @@ export const SignUpPage = () => {
   const navigate = useNavigate();
 
   const onSignUpClicked = async () => {
-      const response = await axios.post('/api/log-in', {
+      const response = await axios.post('/api/sign-up', {
           email: emailValue,
           password: passwordValue,
       });
