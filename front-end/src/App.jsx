@@ -6,6 +6,7 @@ import { UserInfoPage } from './UserInfoPage';
 import { PrivateRoute } from './PrivateRoute';
 import { JwtDecoder } from "./JwtDecoder.jsx";
 import { useUser } from './useUser.js';
+import { PleaseVerifyEmailPage } from "./PleaseVerifyEmailPage.jsx";
 
 function App() {
   const user = useUser();
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/log-in" element={<LogInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/please-verify" element={<PleaseVerifyEmailPage />} />
           <Route element={<PrivateRoute redirectPath="log-in" isAllowed={!!user} />}>
             <Route path="/" element={<UserInfoPage />} />
           </Route>
