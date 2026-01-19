@@ -21,7 +21,7 @@ function App() {
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/please-verify" element={<PleaseVerifyEmailPage />} />
           <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />} />
-          <Route path="forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route element={<PrivateRoute redirectPath="log-in" isAllowed={!!user} />}>
             <Route path="/" element={<UserInfoPage />} />
           </Route>
