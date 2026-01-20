@@ -95,8 +95,9 @@ app.put('/api/users/:userId', async (req, res) => {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
         if (err) return res.status(401).send({message: 'Unable to verify token'});
 
-        const { id } = decoded;
+        const { id, isVerified } = decoded;
         if (id !== userId) return res.status(403).json({message: 'Not allowed to update that userId'});
+        if (!isVerified) return res.status(403).send({message: 'Email must be verified'});
 
         const  { favoriteFood, hairColor, bio } = req.body;
         const updates = { favoriteFood, hairColor, bio };
