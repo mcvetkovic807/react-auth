@@ -183,4 +183,19 @@ app.get('/api/auth/google/url', (req, res) => {
     res.status(200).json({url})
 });
 
+app.get('/auth/google/callback', async(req, res) => {
+    const { code } = req.query;
+
+    const oauthUserInfo = {};
+    const createdUser = {};
+    const { id, isVerified, email, info } = createdUser;
+
+    jwt.sign({ id, isVerified, email, info }, process.env.JWT_SECRET, { expiresIn: '2d' }, (err, token) => {
+        if (err) return res.sendStatus(500);
+        res.redirect(`http://localhost:5173/login?token=${token}`);
+    });
+
+    jwt.sign();
+});
+
 app.listen(3000, () => console.log('Server running on port 3000'));
