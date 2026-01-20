@@ -186,13 +186,13 @@ app.get('/api/auth/google/url', (req, res) => {
 app.get('/auth/google/callback', async(req, res) => {
     const { code } = req.query;
 
-    const oauthUserInfo = getGoogleUser(code);
-    const createdUser = updateOrCreateUserFromOauth(oauthUserInfo);
+    const oauthUserInfo = await getGoogleUser(code);
+    const createdUser = await updateOrCreateUserFromOauth(oauthUserInfo);
     const { id, isVerified, email, info } = createdUser;
 
     jwt.sign({ id, isVerified, email, info }, process.env.JWT_SECRET, { expiresIn: '2d' }, (err, token) => {
         if (err) return res.sendStatus(500);
-        res.redirect(`http://localhost:5173/login?token=${token}`);
+        res.redirect(`http://localhost:5173/log-in?token=${token}`);
     });
 });
 
