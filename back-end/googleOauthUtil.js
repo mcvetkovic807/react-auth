@@ -1,4 +1,5 @@
 const { google } = require('googleapis');
+const { db, saveDb } = require('./db');
 
 const oauthClient = new google.auth.OAuth2(
     process.env.GOOGLE_CLIENT_ID,
@@ -28,4 +29,30 @@ const getGoogleUser = async(code) => {
     return response.data;
 }
 
-module.exports = { getGoogleOauthUrl, getGoogleUser };
+const updateOrCreateUserFromOauth = async (oauthUserInfo) => {
+    const {
+        id: googleId,
+        verified_email: isVerified,
+        email,
+    } = oauthUserInfo;
+
+    const existingUser = db.users.find(user => user.email === email);
+    if (existingUser) {
+        existingUser.googleId = googleId;
+        existingUser.isVerified = isVerified || existingUser.isVerified;
+        saveDb();
+        return existingUser;
+    } else {
+        const newUser = {
+            email,
+            googleId,
+            isVerified,
+            info: {},
+        };
+        db.user.push(newUser);
+        saveDb();
+        return newUser;
+    }
+}
+
+module.exports = { getGoogleOauthUrl, getGoogleUser, updateOrCreateUserFromOauth };
