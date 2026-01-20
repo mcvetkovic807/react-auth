@@ -15,7 +15,7 @@ const getGoogleOauthUrl = () => {
   return oauthClient.generateAuthUrl({
       access_type: 'offline',
       prompt: 'consent',
-      scope: 'scopes',
+      scope: scopes,
   });
 }
 
