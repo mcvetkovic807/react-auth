@@ -19,4 +19,13 @@ const getGoogleOauthUrl = () => {
   });
 }
 
-module.exports = { getGoogleOauthUrl };
+const getGoogleUser = async(code) => {
+    const { tokens } = await oauthClient.getToken(code);
+    const response = await axios.get(
+        `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${tokens.accessToken}`,
+        { headers: { Authorization: `Bearer ${tokens.id_token}` } },
+    );
+    return response.data;
+}
+
+module.exports = { getGoogleOauthUrl, getGoogleUser };

@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 const { db, saveDb } = require('./db');
 const {sendEmail} = require("./sendEmail");
-const {getGoogleOauthUrl} = require("./googleOauthUtil");
+const {getGoogleOauthUrl, getGoogleUser} = require("./googleOauthUtil");
 
 const app = express();
 app.use(express.json()); // parses the body
@@ -186,7 +186,7 @@ app.get('/api/auth/google/url', (req, res) => {
 app.get('/auth/google/callback', async(req, res) => {
     const { code } = req.query;
 
-    const oauthUserInfo = {};
+    const oauthUserInfo = getGoogleUser(code);
     const createdUser = {};
     const { id, isVerified, email, info } = createdUser;
 
@@ -194,8 +194,6 @@ app.get('/auth/google/callback', async(req, res) => {
         if (err) return res.sendStatus(500);
         res.redirect(`http://localhost:5173/login?token=${token}`);
     });
-
-    jwt.sign();
 });
 
 app.listen(3000, () => console.log('Server running on port 3000'));
